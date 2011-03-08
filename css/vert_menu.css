@@ -1,0 +1,63 @@
+
+/*Credits: Dynamic Drive CSS Library */
+/*URL: http://www.dynamicdrive.com/style/ */
+
+.sidebarmenu ul{
+margin: 0;
+padding: 0;
+list-style-type: none;
+font: bold 13px Verdana;
+width: 180px; /* Main Menu Item widths */
+border-bottom: 1px solid #ccc;
+position: absolute;
+}
+ 
+.sidebarmenu ul li{
+position: relative;
+background-color: #000000;
+}
+
+/* Top level menu links style */
+.sidebarmenu ul li a{
+display: block;
+overflow: auto; /*force hasLayout in IE7 */
+color: white;
+background-color: #000000;
+text-decoration: none;
+padding: 6px;
+border-bottom: 1px solid #778;
+border-right: 1px solid #778;
+}
+
+.sidebarmenu ul li a{
+background-color: #000000; /*background of tabs (default state)*/
+}
+
+.sidebarmenu a.clicked{
+background-color: #f97d03; /*background of tabs (default state)*/
+}
+
+.sidebarmenu a.default{
+background-color: #000000; /*background of tabs (default state)*/
+}
+
+.sidebarmenu ul li a:hover{
+background-color: #f97d03;
+}
+
+/*Sub level menu items */
+.sidebarmenu ul li ul{
+position: absolute;
+width: 170px; /*Sub Menu Items width */
+top: 0;
+visibility: hidden;
+background-color: #012D58;
+}
+
+.sidebarmenu a.subfolderstyle{
+background: url(../images/right.gif) no-repeat 97% 50%;
+}
+
+
+ 
+

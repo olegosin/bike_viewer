@@ -225,11 +225,11 @@
 			
 			var bikeModelPath = "./assets/";
 
-			document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+			//document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
 			init();
 			setInterval( loop, 1000 / 60 );
-
+			
 			function init() 
 			{
 
@@ -320,6 +320,7 @@
 				webglRenderer = new THREE.WebGLRenderer();
 				webglRenderer.setSize( winWidth, winHeight );
 				container.appendChild( webglRenderer.domElement );
+				webglRenderer.domElement.addEventListener( 'mousemove', onDocumentMouseMove, false );
 
 				if ( statsEnabled ) 
 				{

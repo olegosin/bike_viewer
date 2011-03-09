@@ -61,36 +61,36 @@
 		<ul id="sidebarmenu1">
 		<li><a href="#">Exhausts</a>
 			<ul>
-			<li><a href="javascript:displayBikeItem('exhaust_leovince.js', 'exhaust', 'leovince')">LeoVince</a></li>
-			<li><a href="javascript:displayBikeItem('exhaust_hyperflow.js', 'exhaust', 'hyperflow')">HyperFlow</a></li>
-			<li><a href="javascript:displayBikeItem('exhaust_akrapovic.js', 'exhaust', 'akrapovic')">Akrapovic</a></li>
-			<li><a href="javascript:displayBikeItem('exhaust_stock.js', 'exhaust', 'default')">Stock</a></li>
+			<li><a class='default_exhausts' href="javascript:displayBikeItem('exhaust_leovince.js', 'exhaust', 'leovince')">LeoVince</a></li>
+			<li><a class='default_exhausts' href="javascript:displayBikeItem('exhaust_hyperflow.js', 'exhaust', 'hyperflow')">HyperFlow</a></li>
+			<li><a class='default_exhausts' href="javascript:displayBikeItem('exhaust_akrapovic.js', 'exhaust', 'akrapovic')">Akrapovic</a></li>
+			<li><a class='clicked_exhausts' href="javascript:displayBikeItem('exhaust_stock.js', 'exhaust', 'default')">Stock</a></li>
 			</ul>
 		</li>
 		<li><a href="#">Wheels</a>
 			<ul>
-			<li><a href="javascript:displayBikeItem('wheels_dymag.js', 'wheels', 'dymag')">Dymag</a></li>
-			<li><a href="javascript:displayBikeItem('wheels_stock.js', 'wheels', 'default')">Stock</a></li>
+			<li><a class='default_wheels' href="javascript:displayBikeItem('wheels_dymag.js', 'wheels', 'dymag')">Dymag</a></li>
+			<li><a class='clicked_wheels' href="javascript:displayBikeItem('wheels_stock.js', 'wheels', 'default')">Stock</a></li>
 			</ul>
 		</li>
 		<li><a href="#">Turn Signals</a>
 			<ul>
-			<li><a href="javascript:displayItem('turns', 'assets/lp_amber_turns.dae')">Amber</a></li>
-			<li><a href="javascript:displayItem('turns', 'assets/lp_clear_turns.dae')">Clear</a></li>
-			<li><a href="javascript:displayItem('turns', 'assets/lp_smock_turns.dae')">Smock</a></li>
-			<li><a href="javascript:displayItem('turns', 'assets/stock_turns.dae')">Stock</a></li>
+			<li><a class='default_turns' href="javascript:displayItem('turns', 'assets/lp_amber_turns.dae')">Amber</a></li>
+			<li><a class='default_turns' href="javascript:displayItem('turns', 'assets/lp_clear_turns.dae')">Clear</a></li>
+			<li><a class='default_turns' href="javascript:displayItem('turns', 'assets/lp_smock_turns.dae')">Smock</a></li>
+			<li><a class='clicked_turns' href="javascript:displayItem('turns', 'assets/stock_turns.dae')">Stock</a></li>
 			</ul>
 		</li>
 		<li><a href="#">Mirrors</a>
 			<ul>
-			<li><a href="javascript:displayItem('mirrors', 'assets/carbon_fiber_mirrors.dae')">Carbon Fiber</a></li>
-			<li><a href="javascript:displayItem('mirrors', 'assets/stock_mirrors.dae')">Stock</a></li>
+			<li><a class='default_mirrors' href="javascript:displayItem('mirrors', 'assets/carbon_fiber_mirrors.dae')">Carbon Fiber</a></li>
+			<li><a class='clicked_mirrors' href="javascript:displayItem('mirrors', 'assets/stock_mirrors.dae')">Stock</a></li>
 			</ul>
 		</li>
 		<li><a href="#">Windshields</a>
 			<ul>
-			<li><a href="javascript:displayItem('windshield', 'assets/clear_windshield.dae')">Clear</a></li>
-			<li><a href="javascript:displayItem('windshield', 'assets/smoked_windshield.dae')">Smoked</a></li>
+			<li><a class='default_windshields' href="javascript:displayItem('windshield', 'assets/clear_windshield.dae')">Clear</a></li>
+			<li><a class='clicked_windshields' href="javascript:displayItem('windshield', 'assets/smoked_windshield.dae')">Smoked</a></li>
 		   </ul>
 		</li>
 
@@ -140,16 +140,30 @@
 						}
 					}
 					
-					var litags=document.getElementById(menuids[i]).getElementsByTagName("a");
-					for (var t=0; t<litags.length; t++)
+					var atags=document.getElementById(menuids[i]).getElementsByTagName("a");
+					for (var t=0; t<atags.length; t++)
 					{
 						//console.log(litags[t])
-						litags[t].onclick=function()
+						atags[t].onclick=function()
 						{
-							if(this.getAttribute('class') != ' subfolderstyle' && this.getAttribute('class') != 'clicked')
-								this.setAttribute('class', 'clicked');
-							else if(this.getAttribute('class') == 'clicked')
-								this.setAttribute('class', 'default');
+							var aString = this.getAttribute('class');
+							if(aString != ' subfolderstyle' && aString.search('clicked') == -1)
+							{
+							
+								var category = aString.slice(aString.search('_')+1); // Isolate the category of this button (e.g default_exhausts)
+								var unclicked = "default_" + category;
+								
+								// unclick all items in this category
+								var atags=document.getElementById("sidebarmenu1").getElementsByTagName("a");
+								for(var i=0; i < atags.length; i++)
+								{
+									if(atags[i].getAttribute('class') && atags[i].getAttribute('class').search(category) != -1)
+										atags[i].setAttribute('class', unclicked);
+										
+								}
+									
+								this.setAttribute('class', 'clicked_'+category); // Click this current button									
+							}
 						}
 					}
 					
@@ -307,7 +321,8 @@
 				webglRenderer.setSize( winWidth, winHeight );
 				container.appendChild( webglRenderer.domElement );
 
-				if ( statsEnabled ) {
+				if ( statsEnabled ) 
+				{
 
 					stats = new Stats();
 					stats.domElement.style.position = 'absolute';

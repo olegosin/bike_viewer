@@ -33,11 +33,36 @@ border-right: 1px solid #778;
 background-color: #000000; /*background of tabs (default state)*/
 }
 
-.sidebarmenu a.clicked{
+.sidebarmenu a.clicked_exhausts{
+background-color: #f97d03; /*background of tabs (default state)*/
+}
+.sidebarmenu a.clicked_turns{
+background-color: #f97d03; /*background of tabs (default state)*/
+}
+.sidebarmenu a.clicked_windshields{
+background-color: #f97d03; /*background of tabs (default state)*/
+}
+.sidebarmenu a.clicked_wheels{
+background-color: #f97d03; /*background of tabs (default state)*/
+}
+.sidebarmenu a.clicked_mirrors{
 background-color: #f97d03; /*background of tabs (default state)*/
 }
 
-.sidebarmenu a.default{
+
+.sidebarmenu a.default_exhausts{
+background-color: #000000; /*background of tabs (default state)*/
+}
+.sidebarmenu a.default_wheels{
+background-color: #000000; /*background of tabs (default state)*/
+}
+.sidebarmenu a.default_turns{
+background-color: #000000; /*background of tabs (default state)*/
+}
+.sidebarmenu a.default_windshields{
+background-color: #000000; /*background of tabs (default state)*/
+}
+.sidebarmenu a.default_mirrors{
 background-color: #000000; /*background of tabs (default state)*/
 }
 

@@ -230,6 +230,17 @@
 			init();
 			setInterval( loop, 1000 / 60 );
 			
+			document.onkeydown = function(e)
+			{
+				switch(e.keyIdentifier)
+				{
+				case "Left":
+					console.log("LEFT KEY IS BEING PRESSED")
+					break;
+				default:
+					break;
+				}
+			}
 			function init() 
 			{
 
@@ -321,6 +332,7 @@
 				webglRenderer.setSize( winWidth, winHeight );
 				container.appendChild( webglRenderer.domElement );
 				webglRenderer.domElement.addEventListener( 'mousemove', onDocumentMouseMove, false );
+				
 
 				if ( statsEnabled ) 
 				{

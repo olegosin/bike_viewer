@@ -235,8 +235,55 @@
 				switch(e.keyIdentifier)
 				{
 				case "Left":
-					console.log("LEFT KEY IS BEING PRESSED")
-					break;
+				{
+					for(var i=0; i < bikeObjList.length; i++)
+					{
+						if(bikeObjList[i]._mesh)
+						{
+							var ry = bikeObjList[i]._mesh.rotation.y - 0.08;
+							bikeObjList[i]._mesh.rotation.y = ry;
+						}
+					}
+				}
+				break;
+				case "Right":
+				{
+					for(var i=0; i < bikeObjList.length; i++)
+					{
+						if(bikeObjList[i]._mesh)
+						{
+							var ry = bikeObjList[i]._mesh.rotation.y + 0.08;
+							bikeObjList[i]._mesh.rotation.y = ry;
+						}
+					}
+				}
+				break;
+				case "Up":
+				{
+					for(var i=0; i < bikeObjList.length; i++)
+					{
+						if(bikeObjList[i]._mesh)
+						{
+							var rx = bikeObjList[i]._mesh.rotation.x - 0.08;
+							if(rx >= -0.64)
+								bikeObjList[i]._mesh.rotation.x = rx;
+						}
+					}
+				}
+				break;
+				case "Down":
+				{
+					for(var i=0; i < bikeObjList.length; i++)
+					{
+						if(bikeObjList[i]._mesh)
+						{
+							var rx = bikeObjList[i]._mesh.rotation.x + 0.08;
+							if(rx <= 1.7)
+								bikeObjList[i]._mesh.rotation.x = rx;
+						}
+					}
+				}
+				break;
 				default:
 					break;
 				}
@@ -391,7 +438,7 @@
 			function loop() {
 
 				var ry = mouseX * 0.0003, rx = mouseY * 0.0003;
-				
+				/*
 				for(var i=0; i < bikeObjList.length; i++)
 				{
 					if(bikeObjList[i]._mesh)
@@ -400,7 +447,7 @@
 						bikeObjList[i]._mesh.rotation.x = rx;
 					}
 				}
-				
+				*/
 				
 
 				webglRenderer.render( scene, camera );

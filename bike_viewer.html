@@ -488,13 +488,17 @@
 						geometry.computeFaceNormals();
 						
 						// If this part already has a mesh associacted with it, then let's remove it first
+						var rot = [0, 0, 0];
 						if(bikeObjList[i]._mesh)
 						{
+							rot[0] = bikeObjList[i]._mesh.rotation.x;
+							rot[1] = bikeObjList[i]._mesh.rotation.y;
+							rot[2] = bikeObjList[i]._mesh.rotation.z;
 							scene.removeObject(bikeObjList[i]._mesh)
 							bikeObjList[i]._mesh.visible = false;
 						}
 						
-						bikeObjList[i]._mesh = SceneUtils.addMesh( scene, geometry, scale, 0, - 50, 0, 0, 0, 0, material );
+						bikeObjList[i]._mesh = SceneUtils.addMesh( scene, geometry, scale, 0, - 50, 0, rot[0], rot[1], rot[2], material );
 						loader.statusDomElement.style.display = "none";
 					}
 				}

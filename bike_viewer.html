@@ -292,6 +292,27 @@
 			init();
 			setInterval( loop, 1000 / 60 );
 			
+			document.onkeydown = function(e)
+			{
+				switch(e.keyIdentifier)
+				{
+				case "Left":
+					rotateBike("left");
+				break;
+				case "Right":
+					rotateBike("right");
+				break;
+				case "Up":
+					rotateBike("up");
+				break;
+				case "Down":
+					rotateBike("down");
+				break;
+				default:
+					break;
+				}
+			}
+			
 			function rotateBike(dir)
 			{
 				switch(dir)

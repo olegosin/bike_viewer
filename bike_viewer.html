@@ -107,6 +107,56 @@
 		</ul>
 		</div>
 		</div>
+		<div class="arrow">
+		<div class="arrow_left">
+		<form name="groovyform1">
+		<input
+		   type="button"
+		   name="groovybtn1"
+		   class="groovybutton"
+		   value="Left"
+		   title=""
+		   onMouseOver="goLite(this.form.name,this.name)"
+		   onMouseOut="goDim(this.form.name,this.name)"
+		   onMouseDown="rotateBike('left')">
+		</form></div>
+		<div class="arrow_down">
+		<form name="groovyform2">
+		<input
+		   type="button"
+		   name="groovybtn2"
+		   class="groovybutton"
+		   value="Down"
+		   title=""
+		   onMouseOver="goLite(this.form.name,this.name)"
+		   onMouseOut="goDim(this.form.name,this.name)"
+		   onMouseDown="rotateBike('down')">
+		</form></div>
+		<div class="arrow_right">
+		<form name="groovyform3">
+		<input
+		   type="button"
+		   name="groovybtn3"
+		   class="groovybutton"
+		   value="Right"
+		   title=""
+		   onMouseOver="goLite(this.form.name,this.name)"
+		   onMouseOut="goDim(this.form.name,this.name)"
+		   onMouseDown="rotateBike('right')">
+		</form></div>
+		<div class="arrow_up">
+		<form name="groovyform4">
+		<input
+		   type="button"
+		   name="groovybtn4"
+		   class="groovybutton"
+		   value="Up"
+		   title=""
+		   onMouseOver="goLite(this.form.name,this.name)"
+		   onMouseOut="goDim(this.form.name,this.name)"
+		   onMouseDown="rotateBike('up')">
+		</form></div>
+		</div>
 		<div id="bottomHeader">
 		</div>
 		
@@ -114,6 +164,18 @@
 		<script type="text/javascript" src="./threejs/js/Stats.js"></script>
 
 		<script type="text/javascript">
+			function goLite(FRM,BTN)
+			{
+			   window.document.forms[FRM].elements[BTN].style.backgroundColor = "#f97d03";
+			   window.document.forms[FRM].elements[BTN].style.borderColor = "#f97d03";
+			}
+
+			function goDim(FRM,BTN)
+			{
+			   window.document.forms[FRM].elements[BTN].style.backgroundColor = "#000000";
+			   window.document.forms[FRM].elements[BTN].style.borderColor = "";
+			}
+
 			// ==============================================
 			// SIDE BAR MENU
 			var menuids=["sidebarmenu1"] //Enter id(s) of each Side Bar Menu's main UL, separated by commas
@@ -143,7 +205,7 @@
 					var atags=document.getElementById(menuids[i]).getElementsByTagName("a");
 					for (var t=0; t<atags.length; t++)
 					{
-						//console.log(litags[t])
+						//console.log(atags[t])
 						atags[t].onclick=function()
 						{
 							var aString = this.getAttribute('class');
@@ -230,11 +292,11 @@
 			init();
 			setInterval( loop, 1000 / 60 );
 			
-			document.onkeydown = function(e)
+			function rotateBike(dir)
 			{
-				switch(e.keyIdentifier)
+				switch(dir)
 				{
-				case "Left":
+				case "left":
 				{
 					for(var i=0; i < bikeObjList.length; i++)
 					{
@@ -246,7 +308,7 @@
 					}
 				}
 				break;
-				case "Right":
+				case "right":
 				{
 					for(var i=0; i < bikeObjList.length; i++)
 					{
@@ -258,7 +320,7 @@
 					}
 				}
 				break;
-				case "Up":
+				case "up":
 				{
 					for(var i=0; i < bikeObjList.length; i++)
 					{
@@ -271,14 +333,14 @@
 					}
 				}
 				break;
-				case "Down":
+				case "down":
 				{
 					for(var i=0; i < bikeObjList.length; i++)
 					{
 						if(bikeObjList[i]._mesh)
 						{
 							var rx = bikeObjList[i]._mesh.rotation.x + 0.08;
-							if(rx <= 1.7)
+							if(rx <= 1.6)
 								bikeObjList[i]._mesh.rotation.x = rx;
 						}
 					}
@@ -288,6 +350,7 @@
 					break;
 				}
 			}
+			
 			function init() 
 			{
 

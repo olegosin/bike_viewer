@@ -36,6 +36,64 @@
     border-width:1px;
 }
 
+.arrow
+{
+    background-color : #000000;
+	font: bold 13px Verdana;
+	color: white;
+	text-align: center;
+}
+
+.arrow_left
+{
+	position: absolute;
+    top : 625px;
+    left: 65px;
+    padding : 0px;
+	width: 40px;
+    z-index: 6;
+}
+
+.arrow_down
+{	
+	position: absolute;
+    top : 625px;
+    left: 110px;
+    padding : 0px;
+	width: 40px;
+    z-index: 6;
+}
+
+.arrow_right
+{
+	position: absolute;
+    top : 625px;
+    left: 166px;
+    padding : 0px;
+	width: 40px;
+    z-index: 6;
+}
+
+.arrow_up
+{
+	position: absolute;
+    top : 603px;
+    left: 117px;
+    padding : 0px;
+	width: 40px;
+    z-index: 6;
+}
+
+input.groovybutton
+{
+   font: bold 13px Verdana;
+   color:#ffffff;
+   background-color:#000000;
+   border-style:none;
+   border-color:#000000
+}
+
+
 #topHeader
 {
     position: absolute;

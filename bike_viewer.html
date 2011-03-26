@@ -348,7 +348,7 @@
 						if(bikeObjList[i]._mesh)
 						{
 							var rx = bikeObjList[i]._mesh.rotation.x - 0.08;
-							if(rx >= -0.64)
+							if(rx >= 0.0)
 								bikeObjList[i]._mesh.rotation.x = rx;
 						}
 					}
@@ -454,9 +454,9 @@
 				loader = new THREE.Loader( true );
 				document.body.appendChild( loader.statusDomElement );
 
-			    //loader.loadBinary( { model: bikeModelPath+"bike_base.js", callback: function( geometry ) { LoadBikeObject( geometry, "mainframe", 10, material ) } } );
-				loader.loadBinary( { model: bikeModelPath+"wheels_stock.js", callback: function( geometry ) { LoadBikeObject( geometry, "wheels", 13, bikeMatList["default"] ) } } );
-				//loader.loadBinary( { model: bikeModelPath+"windshield_stock.js", callback: function( geometry ) { LoadBikeObject( geometry, "windshield", 10, material ) } } );
+			    
+				//loader.loadBinary( { model: bikeModelPath+"wheels_stock.js", callback: function( geometry ) { LoadBikeObject( geometry, "wheels", 13, bikeMatList["default"] ) } } );
+				loader.loadBinary( { model: bikeModelPath+"bike_base.js", callback: function( geometry ) { LoadBikeObject( geometry, "mainframe", 13, bikeMatList["default"] ) } } );
 				loader.loadBinary( { model: bikeModelPath+"exhaust_stock.js", callback: function( geometry ) { LoadBikeObject( geometry, "exhaust", 13, bikeMatList["default"] ) } } );
 
 				webglRenderer = new THREE.WebGLRenderer();
@@ -498,7 +498,14 @@
 							bikeObjList[i]._mesh.visible = false;
 						}
 						
-						bikeObjList[i]._mesh = SceneUtils.addMesh( scene, geometry, scale, 0, - 50, 0, rot[0], rot[1], rot[2], material );
+						var pos = [0, 0, 0];
+						console.log(bikePart)
+						if(bikePart == "exhaust")
+						{
+							console.log("HELLO")
+							pos = [-351.57, 167.899, 0.0];
+						}
+						bikeObjList[i]._mesh = SceneUtils.addMesh( scene, geometry, scale, pos[0], pos[1], pos[2], rot[0], rot[1], rot[2], material );
 						loader.statusDomElement.style.display = "none";
 					}
 				}

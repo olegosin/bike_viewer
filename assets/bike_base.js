@@ -1,6 +1,6 @@
-// Converted from: bike_base.obj
-//  vertices: 16426
-//  faces: 15713 
+// Converted from: bike.obj
+//  vertices: 20339
+//  faces: 19599 
 //  materials: 1
 //
 //  Generated with OBJ -> Three.js converter
@@ -11,12 +11,7 @@ var model = {
     'materials': [	{
 	"a_dbg_color" : 0xeeeeee,
 	"a_dbg_index" : 0,
-	"a_dbg_name" : "lambert2SG",
-	"col_ambient" : [0.0, 0.0, 0.0],
-	"col_diffuse" : [0.0, 0.0, 0.0],
-	"illumination" : 4,
-	"map_diffuse" : "CBR600RR_Color_2.jpg",
-	"optical_density" : 1.0
+	"a_dbg_name" : "Bike_with_Wheels_lambert2SG"
 	}],
 
     'buffers': 'bike_base.bin',

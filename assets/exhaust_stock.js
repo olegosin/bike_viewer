@@ -1,4 +1,4 @@
-// Converted from: exhaust_stock.obj
+// Converted from: exh_stock.obj
 //  vertices: 274
 //  faces: 272 
 //  materials: 1
